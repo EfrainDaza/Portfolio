@@ -272,10 +272,12 @@ body{
     right: 100%;
 }
 
-/* ESTILOS GENERALES(cabecera) SOBRE MI, ESTUDIOS*/
+/* ESTILOS GENERALES(cabecera) SOBRE MI, ESTUDIOS, PORTAFOLIO, BLOG */
 
 .content__about,
-.content__resume{
+.content__resume,
+.content__portfolio,
+.content__blog{
     display: block;
     height: 100%;
     min-width: 100%;
@@ -284,17 +286,23 @@ body{
     padding-right: 3rem;
 }
 .about__header,
-.resume__header{
+.resume__header,
+.porfolio__header,
+.blog__header{
     display: inline-block;
     margin-bottom: 4.5rem;
 }
 .about__title,
-.resume__title{
+.resume__title,
+.porfolio__title,
+.blog__title{
     position: relative;
     font-size: 3.2rem;
 }
 .about__title::after,
-.resume__title::after{
+.resume__title::after,
+.porfolio__title::after,
+.blog__title::after{
     content: "";
     width: 50px;
     height: 30px;
@@ -830,4 +838,186 @@ body{
     font-size: 1.2rem;
     color: var(--color-subtitle);
     opacity: 0.9;
+}
+
+/* PORTFOLIO */
+.portfolio__nav{
+    margin-bottom: 3rem;
+}
+.portfolio__menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    /*justify-content: space-between;*/
+}
+
+.portfolio__option{
+    font-size: 1.3rem;
+    opacity: 0.7;
+}
+
+.portfolio__option--active{
+    opacity: 1;
+}
+
+.portfolio__link{
+    cursor: pointer;
+}
+
+.portfolio__link:hover{
+    color: var(--color-secondary);
+    text-shadow: 0 0 0.1rem rgba(0,0,0, 0.25); /* sombrea de cada option de navbar*/
+}
+
+.portfolio__gallery{ /* galeria de portfolio*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.gallery__item{
+    position: relative;/* para poder sobre poner los iconos sobre la img*/
+    flex-basis: 33%;
+    padding: 0.5rem;
+}
+
+.gallery__container-image{ /* ponemos hideen para que se mantenga la imagen en su contenedor y en :hover solo se hace la scale de la img sin que salga de su cuadro*/
+    overflow: hidden;
+}
+
+.gallery__image{
+    transition: all 300ms ease-in-out;
+}
+
+.gallery__item:hover .gallery__image{/* zoom / scala de imagen*/
+    transform: scale(1.1);
+}
+
+.gallery__title{
+    font-size: 1.6rem;
+    padding: 1.5rem 0;
+    font-weight: bold; /* hacemos que resalte las letras mas negra*/
+}
+
+.gallery__icon{
+    opacity: 0;
+    position: absolute; /* para manejar los iconos sobre la img*/
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem; 
+    text-align: center;/*para centrar el icono*/
+    line-height: 3rem; /*necesario para centrar el icono*/
+
+    background-color: var(--color-principal);
+    color: var(--color-secondary);
+    transition: all 350ms ease-in-out;
+}
+
+.gallery__category{ /* lo mismo que gallery__icon para sobre poner la img*/
+    opacity: 0;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.2rem 0.7rem;
+    font-size: 1.1rem;
+
+    background-color: var(--color-principal);
+    color: var(--color-text);
+    transition: all 350ms ease-in-out;
+}
+
+.gallery__item:hover .gallery__icon,/* efecto de opacidad con iconos y categorias sobre la img*/
+.gallery__item:hover .gallery__category{
+    opacity: 1;
+} 
+
+/* BLOG */
+
+.blog__articles{
+    margin-bottom: 2.5rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.articles__article{
+    flex-basis: 50%;
+    padding: 0 1.5rem;
+    padding-bottom: 3.5rem;
+}
+
+.article__top{
+    position: relative;
+    overflow: hidden;
+}
+.article__category{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.1rem;
+    padding: 0.1rem 0.7rem;
+    line-height: 2rem;
+
+    background-color: var(--color-principal);
+    color: var(--color-text);
+    z-index: 3;/*para mantener el nombre de categoria sobre la img*/
+}
+
+.article__mask{
+    width: 100%;
+    height: 18.5rem;
+    overflow: hidden;
+}
+
+.article__image{
+    display: block;
+    z-index: 1; /*para mantener el nombre de categoria sobre la img*/
+    transition: all 300ms ease-in-out;
+}
+
+.article__top:hover .article__image{
+    transform: scale(1.1);
+}
+
+.article__logo{
+    transition: all 300ms ease-in-out;
+    opacity: 0;
+}
+.article__top:hover .article__logo{
+    opacity: 1;
+}
+
+.article__icon{
+    width: 4.4rem;
+    position: absolute;
+    top: calc(50% - 2.2rem); /*colocamos el icons en el centro de la img restando su tamaño*/
+    left: calc(50% - 2.2rem);/*colocamos el icons en el centro de la img restando su tamaño*/
+    font-size: 4.4rem;
+    text-align: center;
+
+    color: var(--color-principal);
+}
+
+.article__bottom{
+    margin: 0;
+    padding: 2.1rem;
+    border-top: 1.5;
+    border: 0.1rem solid var(--color-border-reviews);
+}
+
+.article__date{
+    display: block;
+    font-size: 1.1rem;
+    /*line-height: 1.2rem;para que se quede mas pegado o ubicado en su caja*/
+    font-weight: 300;/* gruesor de letra*/
+    color: var(--color-subtitle);
+}
+
+.article__title{
+    font-size: 1.8rem;
+    
 }
